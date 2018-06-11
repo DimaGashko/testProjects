@@ -1,7 +1,6 @@
-var AA = /** @class */ (function () {
-    function AA(type, age) {
-        this.type = type;
-        this.age = age;
-    }
-    return AA;
-}());
+function Log() {
+    return 5;
+}
+function sum(a, b) {
+    return a + b;
+}
