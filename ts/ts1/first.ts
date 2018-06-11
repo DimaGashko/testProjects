@@ -1,3 +1,1 @@
-import { log } from './module';
-
-log(5);
+let test: number = 5;   

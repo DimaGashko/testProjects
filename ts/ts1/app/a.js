@@ -1,2 +1,2 @@
 "use strict";
-var test = 5;
+var a = 5;
