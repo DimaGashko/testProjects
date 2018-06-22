@@ -3,18 +3,18 @@
 # compiled output
 
 #don't ignor it for a gh-pages
-**/dist
-**/tmp
+#/dist
+/tmp
 
-**/out-tsc
+/out-tsc
 
 # dependencies
-**/node_modules
+/node_modules
 
 # IDEs and editors
-**/.idea
-**/.project
-**/.classpath
+/.idea
+.project
+.classpath
 .c9/
 *.launch
 .settings/
