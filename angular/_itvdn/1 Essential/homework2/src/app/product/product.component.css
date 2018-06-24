@@ -1,0 +1,25 @@
+:host {
+   background: rgba(230,230,230);
+   border-radius: 5px;
+   border: 3 px solid rgba(200,200,200);
+   padding: 20px; 
+   text-align: center;
+   font-size: 16px;
+   position: relative;
+   margin: 1%;
+   float: left;
+   width: calc(100% / 6);
+}
+
+
+
+.id {
+   position: absolute;
+   right: 5px;
+   top: 5px;
+   color: #c00;
+}
+
+.remove {
+   margin-top: 10px;
+}

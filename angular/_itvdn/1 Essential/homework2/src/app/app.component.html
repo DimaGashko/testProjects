@@ -1,3 +1,9 @@
-<input type="number" max="100" min="0" [(ngModel)]="rows">
+<h1>Products</h1>
 
-<app-my-table [rows]="rows"></app-my-table>
+<label>Enter the number you need: 
+    <input type="number" max="100" min="0" [(ngModel)]="rows">
+</label>
+
+<div class="products">
+  <app-my-table [rows]="rows"></app-my-table>
+</div>
