@@ -11,5 +11,14 @@ export class AppComponent {
 
   setMax(max: number): void {
     this.max = max;
+    this.correctRows();
   }
+
+  correctRows(): void {
+    if (this.rows > this.max) {
+      this.rows = this.max;
+    }
+  
+  }
+
 }
