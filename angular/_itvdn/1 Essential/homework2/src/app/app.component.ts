@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  rows:number = 5;
+export class AppComponent {  
+  max: number = 5;
+  rows: number = this.max;
+
+  setMax(max: number): void {
+    this.max = max;
+  }
 }

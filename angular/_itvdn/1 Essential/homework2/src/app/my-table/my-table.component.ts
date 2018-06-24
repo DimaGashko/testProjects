@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../product';
 import { Products } from '../products-db';
@@ -11,11 +11,25 @@ import { Products } from '../products-db';
 export class MyTableComponent implements OnInit {
   products: Product[] = Products;
 
-  @Input("rows")
+  @Input('rows')
   rowsString: string = '';
+
+  @Output()
+  changeMax = new EventEmitter<number>();
+
+  constructor() { }
+
+  ngOnInit() {
+    this.updateMax();
+  }
 
   removeById(id: number) { 
     this.products = this.products.filter(item => item.id !== id);
+    this.updateMax();
+  }
+
+  updateMax(): void {
+    this.changeMax.emit(this.products.length);
   }
 
   get rows(): number {
@@ -31,11 +45,6 @@ export class MyTableComponent implements OnInit {
 
   isEmpty(): boolean {
     return !!(this.rows === 0 && this.products.length);
-  }
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
 }
