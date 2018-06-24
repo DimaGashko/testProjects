@@ -1,1 +1,3 @@
-<app-my-table rows="5"></app-my-table>
+<input type="number" max="100" min="0" [(ngModel)]="rows">
+
+<app-my-table [rows]="rows"></app-my-table>
