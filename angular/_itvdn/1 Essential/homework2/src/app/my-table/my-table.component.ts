@@ -16,14 +16,17 @@ export class MyTableComponent implements OnInit {
 
   get rows(): number {
     const rows = +this.rowsString;
-    
+
     return (isNaN(rows) || rows === 0) ?
-        0 : Math.abs(rows);
+      0 : Math.abs(rows);
   }
 
-  isEmpty() {
-    console.log(typeof this.rows);
-    return this.rows === 0 && this.products.length;
+  getVisibleProducts(): Product[] {
+    return this.products.slice(0, this.rows);
+  }
+
+  isEmpty(): boolean {
+    return !!(this.rows === 0 && this.products.length);
   }
 
   constructor() { }
