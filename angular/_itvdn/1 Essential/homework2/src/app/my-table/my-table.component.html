@@ -3,15 +3,5 @@
 </div>
 
 <ng-template #noEmpty>
-  <table>
-    <div>
-      <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-    </div>
-  
-    <app-product *ngFor="let product of getVisibleProducts()" [product]="product"></app-product>
-  </table>
+  <app-product *ngFor="let product of getVisibleProducts()" [product]="product"></app-product>
 </ng-template>
