@@ -3,5 +3,8 @@
 </div>
 
 <ng-template #noEmpty>
-  <app-product *ngFor="let product of getVisibleProducts()" [product]="product"></app-product>
+  <app-product 
+    *ngFor="let product of getVisibleProducts()" 
+    [product]="product"
+    (remove)="removeById($event)"></app-product>
 </ng-template>

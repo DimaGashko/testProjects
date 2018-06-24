@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../product';
 
@@ -11,7 +11,14 @@ export class ProductComponent implements OnInit {
   @Input()
   product: Product;
 
+  @Output()
+  remove: EventEmitter<number> = new EventEmitter();
+
   constructor() { }
+
+  emitRemove() { 
+    this.remove.emit(this.product.id);
+  }
 
   ngOnInit() {
   }

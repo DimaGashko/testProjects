@@ -14,6 +14,10 @@ export class MyTableComponent implements OnInit {
   @Input("rows")
   rowsString: string = '';
 
+  removeById(id: number) { 
+    this.products = this.products.filter(item => item.id !== id);
+  }
+
   get rows(): number {
     const rows = +this.rowsString;
 
