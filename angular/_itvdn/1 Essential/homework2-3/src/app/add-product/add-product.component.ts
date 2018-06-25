@@ -22,10 +22,12 @@ export class AddProductComponent implements OnInit {
     const form = event.target as any;
 
     this.add({
-      name: form.name,
-      price: form.price,
-      group: form.group,
+      name: form.name.value,
+      price: form.price.value,
+      group: form.group.value,
     });
+
+    form.reset();
   }
 
   add(config: Object): void {

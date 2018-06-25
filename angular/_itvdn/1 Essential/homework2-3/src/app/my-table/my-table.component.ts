@@ -27,6 +27,17 @@ export class MyTableComponent implements OnInit {
     this.updateMax();
   }
 
+  add(config) {
+    this.products.push({
+      id: this.products[this.products.length - 1].id + 1,
+      name: config.name,
+      price: config.price,
+      group: config.group,
+    });
+
+    this.updateMax();
+  }
+
   removeById(id: number) { 
     this.products = this.products.filter(item => item.id !== id);
     this.updateMax();
