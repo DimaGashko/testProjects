@@ -1,6 +1,6 @@
 import { Product } from './product'
 
-export const Products: Product[] = [
+export const products: Product[] = [
     { id: 1, name: "product 1", price: 100, group: 'group1' },
     { id: 2, name: "product 2", price : 200, group: 'group2' },
     { id: 3, name: "product 3", price : 800, group: 'group3' },

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../product';
-import { Products } from '../products-db';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-my-table',
@@ -9,21 +9,20 @@ import { Products } from '../products-db';
   styleUrls: ['./my-table.component.css']
 })
 export class MyTableComponent implements OnInit {
-  products: Product[] = Products;
-  filterProducts: Product[] = [];
+  products: Product[] = [];
 
-  @Input('rows')
-  rowsString: string = '';
+  @Input('rows') rowsString: string = '';
+  @Input() selectGroup: string = '';
 
-  @Input()
-  selectGroup: string = '';
+  @Output() changeMax = new EventEmitter<number>();
 
-  @Output()
-  changeMax = new EventEmitter<number>();
+  constructor(private productsService: ProductsService) { 
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    console.log(this.productsService.getProducts)
+    this.products = this.productsService.getProducts();
     this.updateMax();
   }
 
