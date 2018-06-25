@@ -1,0 +1,9 @@
+<h1>Products</h1>
+
+<label>Enter the number you need: 
+    <input type="number" [max]="max" min="0" autofocus [(ngModel)]="rows">
+</label>
+
+<div class="products">
+  <app-my-table [rows]="rows" (changeMax)="setMax($event)"></app-my-table>
+</div>
