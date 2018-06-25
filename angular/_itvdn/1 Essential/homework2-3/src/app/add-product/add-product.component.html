@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h3>Add Product</h3>
+
+  <form (submit)="$event.preventDefault(); submitTrigger($event)">
+    <label>Product Name: <input type="text" name="name"></label>
+    <label>Price: <input type="text" name="price"></label>
+    <label>Group: 
+      <select name="group">
+        <option value="group1">Group 1</option>
+        <option value="group2">Group 2</option>
+        <option value="group3">Group 3</option>
+      </select>
+    </label>
+    <input type="submit" value="Add product">
+  
+  </form>
+
+</div>
