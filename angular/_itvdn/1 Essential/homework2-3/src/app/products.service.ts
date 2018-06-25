@@ -22,5 +22,7 @@ export class ProductsService {
     });
   }
 
-  
+  removeById(id: number): void { 
+    this.products = this.products.filter(item => item.id !== id);
+  }
 }

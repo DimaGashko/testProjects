@@ -9,10 +9,12 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./my-table.component.css']
 })
 export class MyTableComponent implements OnInit {
-  products: Product[] = [];
+  get products(): Product[] {
+    return this.productsService.getProducts();
+  }
 
   @Input('rows') rowsString: string = '';
-  @Input() selectGroup: string = '';
+  @Input() selectGroup: string = ''; 
 
   @Output() changeMax = new EventEmitter<number>();
 
@@ -21,24 +23,16 @@ export class MyTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.productsService.getProducts)
-    this.products = this.productsService.getProducts();
     this.updateMax();
   }
 
-  add(config) {
-    this.products.push({
-      id: this.products[this.products.length - 1].id + 1,
-      name: config.name,
-      price: config.price,
-      group: config.group,
-    });
-
+  add(config): void {
+    this.productsService.add(config);
     this.updateMax();
   }
 
-  removeById(id: number) { 
-    this.products = this.products.filter(item => item.id !== id);
+  removeById(id: number): void { 
+    this.productsService.removeById(id);
     this.updateMax();
   }
 
