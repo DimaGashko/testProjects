@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {  
   max: number = 5;
   rows: number = this.max;
-  selectGroup: string = 'group1';
+  selectGroup: string = 'all';
 
   setMax(max: number): void {
     this.max = max;
@@ -21,5 +21,5 @@ export class AppComponent {
     }
   
   }
-  
+
 }

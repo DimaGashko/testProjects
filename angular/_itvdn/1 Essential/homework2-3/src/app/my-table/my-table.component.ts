@@ -33,7 +33,7 @@ export class MyTableComponent implements OnInit {
   }
 
   updateMax(): void {
-    this.changeMax.emit(this.filterProducts.length);
+    this.changeMax.emit(this.products.length);
   }
 
   get rows(): number {
@@ -42,20 +42,19 @@ export class MyTableComponent implements OnInit {
     return (isNaN(rows) || rows === 0) ?
       0 : Math.abs(rows);
   }
-
+  
   getVisibleProducts(): Product[] {
-    this.updateFilterProducts();
-    this.updateMax();
-    return this.filterProducts.slice(0, this.rows);
+    return this.getProductsByGroup(this.selectGroup)
+      .slice(0, this.rows);
   }
 
-  updateFilterProducts(): void {
+  getProductsByGroup(group: string): Product[] {
     if (this.selectGroup === 'all') {
-      this.filterProducts = this.products.slice();
+      return this.products.slice();
     }
 
-    this.filterProducts = this.products
-      .filter(item => item.group === this.selectGroup);
+    return this.products
+      .filter(item => item.group === group);
   }
 
   isEmpty(): boolean {
