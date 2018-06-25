@@ -10,9 +10,13 @@ import { Products } from '../products-db';
 })
 export class MyTableComponent implements OnInit {
   products: Product[] = Products;
+  filterProducts: Product[] = [];
 
   @Input('rows')
   rowsString: string = '';
+
+  @Input()
+  selectGroup: string = '';
 
   @Output()
   changeMax = new EventEmitter<number>();
@@ -29,7 +33,7 @@ export class MyTableComponent implements OnInit {
   }
 
   updateMax(): void {
-    this.changeMax.emit(this.products.length);
+    this.changeMax.emit(this.filterProducts.length);
   }
 
   get rows(): number {
@@ -40,7 +44,18 @@ export class MyTableComponent implements OnInit {
   }
 
   getVisibleProducts(): Product[] {
-    return this.products.slice(0, this.rows);
+    this.updateFilterProducts();
+    this.updateMax();
+    return this.filterProducts.slice(0, this.rows);
+  }
+
+  updateFilterProducts(): void {
+    if (this.selectGroup === 'all') {
+      this.filterProducts = this.products.slice();
+    }
+
+    this.filterProducts = this.products
+      .filter(item => item.group === this.selectGroup);
   }
 
   isEmpty(): boolean {

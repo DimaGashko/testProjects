@@ -2,6 +2,7 @@
 
   <div class="id">{{product.id}}</div>
   <div>{{product.name}}: <span [class.dearly]="isDearly()">{{product.price}}</span></div>
+  <div>{{product.group}}</div>
   
   <button class="remove" (click)="emitRemove()">Remove</button>
 

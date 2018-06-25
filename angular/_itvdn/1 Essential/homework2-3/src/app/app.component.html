@@ -2,10 +2,11 @@
 
 <div>
   <label>Select the group: 
-    <select>
-      <option value="group1">group 1</option>
-      <option value="group2">group 2</option>
-      <option value="group3">group 3</option>
+    <select [(ngModel)]="selectGroup" (change)="log()">
+      <option value="all">All Groups</option>
+      <option value="group1">Group 1</option>
+      <option value="group2">Group 2</option>
+      <option value="group3">Group 3</option>
     </select>
   </label>
 </div>
@@ -17,5 +18,8 @@
 </div>
 
 <div class="products">
-  <app-my-table [rows]="rows" (changeMax)="setMax($event)"></app-my-table>
+  <!--<app-my-table [rows]="rows" 
+    [selectGroup]="selectGroup" 
+    (changeMax)="setMax($event)"
+  ></app-my-table>-->
 </div>
