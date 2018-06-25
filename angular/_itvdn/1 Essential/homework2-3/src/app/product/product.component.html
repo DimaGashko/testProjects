@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="id">{{product.id}}</div>
-  <div>{{product.name}}: {{product.price}}</div>
+  <div>{{product.name}}: <span [class.dearly]="isDearly()">{{product.price}}</span></div>
   
   <button class="remove" (click)="emitRemove()">Remove</button>
 

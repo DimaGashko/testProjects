@@ -14,6 +14,10 @@ export class ProductComponent implements OnInit {
   @Output()
   remove: EventEmitter<number> = new EventEmitter();
 
+  isDearly() {
+    return this.product.price >= 500;
+  }
+
   constructor() { }
 
   emitRemove() { 
