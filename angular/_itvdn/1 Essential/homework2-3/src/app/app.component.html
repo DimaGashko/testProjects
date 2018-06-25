@@ -1,8 +1,20 @@
 <h1>Products</h1>
 
-<label>Enter the number you need: 
+<div>
+  <label>Select the group: 
+    <select>
+      <option value="group1">group 1</option>
+      <option value="group2">group 2</option>
+      <option value="group3">group 3</option>
+    </select>
+  </label>
+</div>
+
+<div>
+  <label>Enter the count: 
     <input type="number" [max]="max" min="0" autofocus [(ngModel)]="rows">
-</label>
+  </label>
+</div>
 
 <div class="products">
   <app-my-table [rows]="rows" (changeMax)="setMax($event)"></app-my-table>
