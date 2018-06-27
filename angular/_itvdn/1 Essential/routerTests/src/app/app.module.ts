@@ -15,19 +15,19 @@ import { InfoComponent } from './info/info.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { 
-        path: '',
-        redirectTo: 'main',
-        pathMatch: 'full',
-      },
       {
-        path: 'main',
+        path: '',
         component: MainComponent,
       },
       {
         path: 'info/:val',
         component: InfoComponent, 
-      }
+      },
+      { 
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full',
+      },
     ]),
 
   ],
