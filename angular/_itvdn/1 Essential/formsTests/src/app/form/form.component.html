@@ -4,7 +4,7 @@
   <div>
     <label>Input a text: 
       <input type="text" placeholder="Text"
-        [(ngModel)]="justtext" name="text" #text="ngModel"
+        [(ngModel)]="text" name="text" #text="ngModel"
         required minlength="3" maxlength="30"
       >
     </label>
@@ -15,10 +15,28 @@
       <span *ngIf="text.errors.maxlength">Maxlength is 30</span>
     </div>
   </div>
+
+  <div>
+      <label>Input a age: 
+        <input type="number" placeholder="Age"
+          [(ngModel)]="age" name="age" #age="ngModel"
+          required min="3" max="130"
+        >
+      </label>
+  
+      <div class="error-container" *ngIf="text.errors && text.dirty">
+        <span *ngIf="text.errors.required">Field is required</span>
+        <span *ngIf="text.errors.minlength">Min is 3</span>
+        <span *ngIf="text.errors.maxlength">Maxis 30</span>
+      </div>
+    </div>
   
   <div>
     <button type="submit">Submit</button>
   </div>
 </form>
 
-<div class="a">{{justtext}}</div>
+<br>
+<br>
+
+<div>{{text}}</div>
