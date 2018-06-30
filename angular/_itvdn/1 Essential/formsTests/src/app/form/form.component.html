@@ -9,10 +9,10 @@
       >
     </label>
 
-    <div *ngIf="text.errors && text.dirty">
-      <div [hidden]="!text.errors.required">Field is required</div>
-      <div [hidden]="!text.errors.minlength">Minlength is 3</div>
-      <div [hidden]="!text.errors.maxlength">Maxlength is 30</div>
+    <div class="error-container" *ngIf="text.errors && text.dirty">
+      <span *ngIf="text.errors.required">Field is required</span>
+      <span *ngIf="text.errors.minlength">Minlength is 3</span>
+      <span *ngIf="text.errors.maxlength">Maxlength is 30</span>
     </div>
   </div>
   
