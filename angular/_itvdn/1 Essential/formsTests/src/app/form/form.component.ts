@@ -75,8 +75,6 @@ export class FormComponent implements OnInit {
         return;
       }
 
-      console.log(control.errors);
-
     });
   }
 
