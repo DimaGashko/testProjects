@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
-import { Observable, from } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+import { filter, map, take, debounce, buffer } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent {
   values: string = '';
-  obs: Observable<number>;
+  obs: Observable<number[]>;
 
   event: EventEmitter<number[]> = new EventEmitter();
 
@@ -19,17 +19,20 @@ export class AppComponent {
   }
   
   ngOnInit(): void {
-    //const obs: Observable<number> = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
-    this.obs = new Observable((observer => { 
-      this.event.subscribe(numbers => { 
+    const obs = new Observable((observer => {
+      this.event.subscribe(numbers => {
         numbers.forEach(n => observer.next(n));
+        console.log(11111111111)
       });
     }));
 
+    this.obs = obs.pipe(
+      buffer(
+        obs.pipe( debounce(() => interval(1000)) )
+      )
+    ) as Observable<number[]>;
 
-    this.obs.pipe(filter(x => x % 2 === 0))
-      .pipe(map(x => x + '.'))
-      .forEach(x => console.log(x));
+    this.obs.forEach(x => console.log(x));
   }
 
   next() {
