@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { Observable, interval } from 'rxjs';
-import { filter, map, take, debounce, buffer } from 'rxjs/operators';
+import { filter, map, take, debounce, buffer   } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +24,7 @@ export class AppComponent {
         numbers.forEach(n => observer.next(n));
         console.log(11111111111)
       });
+
     }));
 
     this.obs = obs.pipe(
