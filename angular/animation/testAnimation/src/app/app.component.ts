@@ -23,6 +23,11 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 })
 export class AppComponent {
   state: string = 'small';
+  text: string = 'small';
+  
+  ngOnInit(): void {
+    
+  }
 
   animateMe() {
     this.state = (this.state === 'large') ? 'small' : 'large';
