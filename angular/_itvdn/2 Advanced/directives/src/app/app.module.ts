@@ -12,6 +12,7 @@ import { BgDirective } from './bg.directive';
 import { ContainerComponent } from './container/container.component';
 import { IfDirective } from './if.directive';
 import { IfComponent } from './if/if.component';
+import { AddIntervalDirective } from './add-interval.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { IfComponent } from './if/if.component';
     BgDirective,
     ContainerComponent,
     IfDirective,
-    IfComponent
+    IfComponent,
+    AddIntervalDirective
   ],
   imports: [
     BrowserModule,
