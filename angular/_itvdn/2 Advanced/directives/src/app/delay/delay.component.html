@@ -2,10 +2,10 @@
   <input type="checkbox" [(ngModel)]="checked">
 </label>
 
-<ul *appIf="checked">
-  <li *ngFor="let item of items; let i=index">
-    <span *addDelay="i * 50">
-      {{item}}
+<div *appIf="checked">
+  <p class="item" *ngFor="let item of items; let i=index">
+    <span *addDelay="i * 20">
+      {{i + 1}}. {{item}}
     </span>
-  </li>
-</ul>
+  </p>
+</div>
