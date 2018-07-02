@@ -1,0 +1,11 @@
+<label>Show List: 
+  <input type="checkbox" [(ngModel)]="checked">
+</label>
+
+<ul *appIf="checked">
+  <li *ngFor="let item of items; let i=index">
+    <span *addDelay="i * 50">
+      {{item}}
+    </span>
+  </li>
+</ul>
