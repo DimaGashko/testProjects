@@ -1,17 +1,21 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Custom Toolbar</span>
-  
     <button mat-button>About</button>
     <button mat-button>Services</button>
     <button mat-button>Contact</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<button mat-button>Button</button>
-<button mat-raised-button>Raised</button>
-<button mat-flat-button>Flat</button>
-<button mat-stroked-button>Stroked</button>
-<button mat-icon-button>Icon</button>
-<button mat-fab>Fab</button>
-<button mat-mini-fab>MFab</button>
+<mat-card>
+  <mat-form-field>
+    <input matInput [(ngModel)]="answer" placeholder="Who has the best dev tutorials?">
+  </mat-form-field>
+
+  <button mat-raised-button (click)="showAnswer()">Answer me</button>
+
+  <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+
+  <mat-card *ngIf="answerDisplay">
+    <h1>{{answerDisplay}}, you're damn right.</h1>
+  </mat-card>
+</mat-card>
