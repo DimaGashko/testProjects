@@ -15,3 +15,14 @@ input {
 p {
    display: inline-block;
 }
+
+label, input, textarea {
+   vertical-align: middle;
+}
+
+textarea {
+   min-height: 20px;
+   min-width: 233px;
+   max-width: 100%;
+   max-height: 500px;
+}

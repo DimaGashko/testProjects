@@ -6,8 +6,8 @@
 
 <div class="comp">
     <label>Text: 
-      <input type="text" name="text" [(ngModel)]="text">
+      <textarea type="text" name="text" [(ngModel)]="text"></textarea>
     </label>
   </div>
 
-<p [appBg]="bg">{{text | uppercase}}</p>
+<p [appBg]="bg">{{text}}</p>
