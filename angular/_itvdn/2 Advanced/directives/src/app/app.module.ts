@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TestDirective } from './test.directive';
+import { EventDirective } from './event.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestDirective
+    TestDirective,
+    EventDirective
   ],
   imports: [
     BrowserModule,
