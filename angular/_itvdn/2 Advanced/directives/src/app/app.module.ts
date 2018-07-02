@@ -10,6 +10,8 @@ import { PrefixDirective } from './prefix.directive';
 import { InputbgComponent } from './inputbg/inputbg.component';
 import { BgDirective } from './bg.directive';
 import { ContainerComponent } from './container/container.component';
+import { IfDirective } from './if.directive';
+import { IfComponent } from './if/if.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ContainerComponent } from './container/container.component';
     PrefixDirective,
     InputbgComponent,
     BgDirective,
-    ContainerComponent
+    ContainerComponent,
+    IfDirective,
+    IfComponent
   ],
   imports: [
     BrowserModule,
