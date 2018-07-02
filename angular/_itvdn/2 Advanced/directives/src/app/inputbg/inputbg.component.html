@@ -1,3 +1,13 @@
-<p>
-  inputbg works!
-</p>
+<div class="comp">
+  <label>Background: 
+    <input type="text" name="bg" [(ngModel)]="bg">
+  </label>
+</div>
+
+<div class="comp">
+    <label>Text: 
+      <input type="text" name="text" [(ngModel)]="text">
+    </label>
+  </div>
+
+<p [appBg]="bg">{{text | uppercase}}</p>

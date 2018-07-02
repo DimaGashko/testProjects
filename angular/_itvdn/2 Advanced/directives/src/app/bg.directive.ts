@@ -1,10 +1,20 @@
-import { Directive } from '@angular/core';
+import { Directive, Renderer2, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appBg]'
+  selector: '[appBg]',
+
 })
 export class BgDirective {
+  get el(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
 
-  constructor() { }
+  @Input('appBg') set bg(bg: string) {
+    this.renderer.setStyle(this.el, 'background', bg);
+  }
+
+  constructor(public elementRef: ElementRef, public renderer: Renderer2) { 
+
+  }
 
 }
