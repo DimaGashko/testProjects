@@ -6,7 +6,7 @@
 #/dist
 /tmp
 
-/package-lock.json
+package-lock.json
 
 /out-tsc
 
