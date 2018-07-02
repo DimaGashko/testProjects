@@ -1,3 +1,15 @@
+<app-container title="Pipe Reverse Test">
+  <label>Input Your Text:
+    <input [(ngModel)]="text">
+  </label>
+
+  <h3>without</h3>
+  <p>{{text}}</p>
+
+  <h3>Whith pipe</h3>
+  <p>{{'text | reverseStr | uppercase}}</p>
+</app-container>
+
 <app-container title="Add After Delay">
     <app-delay></app-delay>
 </app-container>

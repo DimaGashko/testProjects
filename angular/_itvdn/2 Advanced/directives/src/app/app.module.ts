@@ -14,6 +14,7 @@ import { IfDirective } from './if.directive';
 import { IfComponent } from './if/if.component';
 import { AddIntervalDirective } from './add-interval.directive';
 import { DelayComponent } from './delay/delay.component';
+import { ReverseStrPipe } from './reverse-str.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DelayComponent } from './delay/delay.component';
     IfDirective,
     IfComponent,
     AddIntervalDirective,
-    DelayComponent
+    DelayComponent,
+    ReverseStrPipe
   ],
   imports: [
     BrowserModule,
