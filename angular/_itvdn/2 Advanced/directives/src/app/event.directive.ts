@@ -20,7 +20,15 @@ export class EventDirective {
   }
 
   constructor(public elementRef: ElementRef, public renderer: Renderer2) {
+    this.startAutoUpdate();
+  }
+
+  startAutoUpdate() {
     this.updateColor();
+
+    setInterval(() => {
+      this.updateColor();
+    }, 500);
   }
 
   updateColor() {
