@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { TestDirective } from './test.directive';
 import { EventDirective } from './event.directive';
 import { PrefixDirective } from './prefix.directive';
+import { InputbgComponent } from './inputbg/inputbg.component';
+import { BgDirective } from './bg.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestDirective,
     EventDirective,
-    PrefixDirective
+    PrefixDirective,
+    InputbgComponent,
+    BgDirective
   ],
   imports: [
     BrowserModule,
