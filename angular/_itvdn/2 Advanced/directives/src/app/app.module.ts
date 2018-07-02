@@ -9,6 +9,7 @@ import { EventDirective } from './event.directive';
 import { PrefixDirective } from './prefix.directive';
 import { InputbgComponent } from './inputbg/inputbg.component';
 import { BgDirective } from './bg.directive';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BgDirective } from './bg.directive';
     EventDirective,
     PrefixDirective,
     InputbgComponent,
-    BgDirective
+    BgDirective,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
