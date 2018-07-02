@@ -2,8 +2,11 @@
   <input [(ngModel)]="text">
 </label>
 
-<h3>Without Pipe</h3>
-<p>{{text}}</p>
+<h3>Sourse Text</h3>
+<pre>{{text}}</pre>
 
-<h3>Whith Pipe</h3>
-<p>{{text | reverseStr | uppercase}}</p>
+<h3>Whith ReverseStr Pipe</h3>
+<pre>{{text | reverseStr}}</pre>
+
+<h3>Whith ReverseWords Pipe</h3>
+<pre>{{text | reverseWords}}</pre>
