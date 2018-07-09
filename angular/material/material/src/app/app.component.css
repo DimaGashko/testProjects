@@ -3,7 +3,7 @@ button {
 }
 
 :host {
-   user-select: none;
+   
 }
 
 .example-icon {
