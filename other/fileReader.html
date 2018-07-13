@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Стилизация input file. CSS стилизация поля для загрузки файла</title>
+	<style type="text/css">
+		.file-upload input[type="file"]{ 
+			display: none;/* скрываем input file */ 
+		} 
+		.file-form-wrap{
+			width:260px; 
+			margin:auto;
+		} 
+		.file-upload { 
+			position: relative; 
+			overflow: hidden; 
+			width: 250px;
+			height:50px;
+			line-height:50px;
+			background: #4169E1; 
+			border-radius: 10px; 
+			color: #fff; 
+			text-align: center; 
+		} 
+		.file-upload:hover { 
+			background: #1E90FF; 
+		} 
+		/* Растягиваем label на всю область блока .file-upload */ 
+		.file-upload label { 
+			display: block; 
+			position: absolute; 
+			top: 0; 
+			left: 0; 
+			width: 100%; 
+			height: 100%; 
+			cursor: pointer; 
+		} 
+		/* стиль текста на кнопке*/ 
+		.file-upload span { 
+			font-weight:bold; 
+		}
+		.preview-img{ 
+			max-width:100px; 
+			max-height:100px; 
+			margin:5px; 
+		}
+	</style>	
+</head>
+<body>
+	<div class="file-form-wrap">
+		<div class="file-upload">
+			<label>
+				<input  class="uploaded-files" type="file" name="file" />
+				<span>Выберите файл</span><br />
+			</label>
+		</div>
+		<div class="preview">&nbsp;</div>
+		<div class="file-name">&nbsp;</div>
+		<div class="file-size">&nbsp;</div>
+	</div>
+	<div class="file-form-wrap">
+		<div class="file-upload">
+			<label>
+				<input class="uploaded-files" type="file" name="file" />
+				<span>Выберите файл</span><br />
+			</label>
+		</div>
+		<div class="preview">&nbsp;</div>
+		<div class="file-name">&nbsp;</div>
+		<div class="file-size">&nbsp;</div>
+	</div>
+	<div class="file-form-wrap">
+		<div class="file-upload">
+			<label>
+				<input class="uploaded-files" type="file" name="file" />
+				<span>Выберите файл</span><br />
+			</label>
+		</div>
+		<div class="preview">&nbsp;</div>
+		<div class="file-name">&nbsp;</div>
+		<div class="file-size">&nbsp;</div>
+	</div>
+	<script type="text/javascript">
+		(function(){
+			
+		var classes = {
+			root: 'file-form-wrap',
+			input: 'uploaded-files',
+			preview: 'preview',
+			name: 'file-name',
+			size: 'file-size',
+		}
+
+		document.body.addEventListener('change', function(event) {
+			var targ = event.target;
+			if (!hasClass(targ, classes.input)) return;
+
+			var root = targ.closest('.' + classes.root);
+			var preview = root.querySelector('.' + classes.preview);
+			var name = root.querySelector('.' + classes.name);
+			var size = root.querySelector('.' + classes.size);
+
+			getFileParam(targ, name, size, preview);
+		});
+
+		function getFileParam($fileInput, $name, $size, $preview) { 		
+			try { 				
+				var file = $fileInput.files[0]; 				
+				if (!file) return;					
+				
+				var fileSize = 0; 
+					
+				$name.innerHTML = 'Имя: ' + file.name;
+				$size.innerHTML = 'Размер: ' + getFileSize(file);
+				
+				if (!/\.(jpe?g|bmp|gif|png)$/i.test(file.name)) return;	
+				$preview.innerHTML = '';
+
+				var newImg = document.createElement('img');
+				newImg.className = "preview-img";
+				
+				if (typeof file.getAsDataURL === 'function') {
+					var data = file.getAsDataURL()
+
+					if (data.substr(0,11) !== 'data:image/') {
+						newImg.onload = function() {
+							$name.innerHTML += getRealSize(newImg);
+						}
+
+						newImg.setAttribute('src', data);
+						$preview.appendChild(newImg);	
+					}						
+					
+				} else {
+					var reader = new FileReader();
+
+					reader.onloadend = function(evt) { 
+						if (evt.target.readyState === FileReader.DONE) {
+							newImg.onload = function() {
+								$name.innerHTML += getRealSize(newImg);
+							}
+						
+							newImg.setAttribute('src', evt.target.result);
+							$preview.appendChild(newImg);
+						}
+					};
+					
+					var slice = file.slice || file.webkitSlice || file.mozSlice;
+					var blob = slice.call(file, 0, file.size);//file.slice(0, file.size)
+					reader.readAsDataURL(blob);
+				}
+				
+			} catch(e) {
+				console.error(e);
+				var name = $fileInput.value.replace(/\\/g, "/").split('/').pop();
+				$name.innerHTML = 'Имя: ' + name;
+			}
+		}
+
+		function hasClass(targ, className) {
+			return new RegExp('(\\s|^)' + className + '(\\s|$)').test(targ.className);
+		}
+
+		function getFileSize(file) {
+			var MB = 1024 * 1024;
+			var KB = 1024;
+
+			if (file.size > MB) {
+				return Math.round(file.size / MB * 100) / 100 + 'MB';
+			} else {
+				return Math.round(file.size / KB * 100) / 100 + 'KB';
+			}
+		}
+
+		function getRealSize(img) {
+			return ' ('+ img.naturalWidth + 'x' + img.naturalHeight + ' px)';
+		}
+
+		//Полифилы
+		(function(e){ 
+			e.closest = e.closest || function(css){ 
+				var node = this;
+			
+				while (node) { 
+					if (node.matches(css)) return node; 
+					else node = node.parentElement; 
+				} 
+				return null; 
+			} 
+		}(Element.prototype));
+
+		(function(e){ 
+			e.matches = e.matchesSelector || e.mozMatchesSelector 
+				|| e.msMatchesSelector || 	e.oMatchesSelector || 
+				e.webkitMatchesSelector || function(s) {
+					var matches = (this.document || this.ownerDocument)
+						.querySelectorAll(s),
+						i = matches.length;
+					while (--i >= 0 && matches.item(i) !== this) {}
+					return i > -1;            
+			};
+
+		}(Element.prototype));
+
+		}());
+	</script>
+</body>
+</html>
