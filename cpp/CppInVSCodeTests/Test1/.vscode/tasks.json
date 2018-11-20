@@ -6,11 +6,12 @@
       {
          "label": "build",
          "type": "shell",
-         "command": "g++ -g main.cpp -o _main",
+         "command": "g++ -g main.cpp -o main",
          "group": {
             "kind": "build",
             "isDefault": true
-         }
+         },
+         "problemMatcher": "$gcc"
       }
    ]
 }
