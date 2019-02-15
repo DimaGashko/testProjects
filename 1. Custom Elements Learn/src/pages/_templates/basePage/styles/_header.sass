@@ -20,9 +20,24 @@
    display: inline-block
    vertical-align: middle
 
+   transform: rotate(0deg)
+
+   animation-iteration-count: 1
+   animation-duration: 1s
+   animation-delay: 2s
+   
+   &:hover
+      animation-name: logo
+
 .logo__title
    margin-left: 10px
    display: inline
    vertical-align: middle
    font-size: 1.5rem
 
+@keyframes logo 
+   0%
+      transform: rotate(0deg)
+
+   100%
+      transform: rotate(360deg)
