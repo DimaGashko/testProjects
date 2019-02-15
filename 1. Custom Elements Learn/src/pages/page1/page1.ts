@@ -19,7 +19,7 @@ class AppDrawer extends HTMLElement {
    
    constructor() {
       super();
-
+      
       this.init();
    }
 
@@ -42,4 +42,8 @@ class AppDrawer extends HTMLElement {
 
 }
 
+
+
 window.customElements.define('app-drawer', AppDrawer);
+
+document.body.innerHTML = `<app-drawer>app-drawer</app-drawer>`;
