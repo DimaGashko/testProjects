@@ -15,13 +15,22 @@
             template: './src/pages/index/index.pug',
          },
       }, {
-         name: 'Page 1',
+         name: 'Page 1 - Custom Elements',
          alias: 'page1',
          url: '/page1', 
          webpackEntry: './src/pages/page1/page1.ts', 
          htmlWebpackPlugin: {
             filename: 'page1/index.html',
             template: './src/pages/page1/page1.pug',
+         },
+      }, {
+         name: 'Page 2 - Shadow DOM',
+         alias: 'page2',
+         url: '/page2', 
+         webpackEntry: './src/pages/page2/page2.ts', 
+         htmlWebpackPlugin: {
+            filename: 'page2/index.html',
+            template: './src/pages/page2/page2.pug',
          },
       }],
    }

@@ -39,7 +39,6 @@ customElements.define('x-foo-shadow-dom', class extends HTMLElement {
 });
 
 
-
 class AppDrawer extends HTMLElement {
    public get disabled(): boolean {
       return this.hasAttribute('disabled');

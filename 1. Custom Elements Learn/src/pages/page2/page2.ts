@@ -1,2 +1,2 @@
 import '../_templates/basePage/basePage';
-import './index.sass';
+import './page2.sass';
