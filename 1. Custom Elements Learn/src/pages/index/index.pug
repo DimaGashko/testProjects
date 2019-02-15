@@ -6,7 +6,15 @@ block title
 block contentTitle 
    | #{pagesConfig.hash.index.name}
 
-block fullWidthContent
-   - fullWidthContent = true
-
 block content
+
+   nav
+
+      - const pages = pagesConfig.pages.filter(page => page.alias !== 'index');
+   
+      h2 Pages:
+
+      ul 
+         for page in pages
+
+            li: a(href=page.url)= page.name

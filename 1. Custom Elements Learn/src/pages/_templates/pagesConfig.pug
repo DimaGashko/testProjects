@@ -14,6 +14,15 @@
             filename: 'index.html',
             template: './src/pages/index/index.pug',
          },
+      }, {
+         name: 'Page 1',
+         alias: 'page1',
+         url: '/page1', 
+         webpackEntry: './src/pages/page1/page1.ts', 
+         htmlWebpackPlugin: {
+            filename: 'page1/index.html',
+            template: './src/pages/page1/page1.pug',
+         },
       }],
    }
    

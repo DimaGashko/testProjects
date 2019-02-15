@@ -18,53 +18,7 @@ a
 // Main
 .main 
    @extend %clearfix, %container
-   margin-bottom: $main-v-padding 
-
-   min-height: 75vh  
-
-   @media screen and (min-width: $desktop-w)
-      margin-bottom: $main-v-padding-desk
-      $aside-w: 400px
-
-      min-height: 95vh  
-
-      .main__content
-      .main__aside
-
-      .main__content
-         width: calc(100% - #{$aside-w})
-         padding: 0 $main-padding-desk
-         padding-right: 0
-
-      .main__aside
-         padding: 0 $main-padding-desk
-         width: $aside-w
- 
-   &--fullWidthContent 
-      .main__content
-         width: 100%
-         padding-right: $main-padding-desk
-         
-      .main__aside
-         width: 100%
-
-.main__content,
-.main__aside 
-   float: left
-   box-sizing: border-box
-   width: 100%
-   padding: $main-padding
-
-.main__content   
-   padding-top: 0
-
-.main__aside 
-  padding: 0 $main-padding
-
-.contentTitle 
-   margin-top: 0
-   font-size: 2rem
+   margin-bottom: 25px 
 
 // MainContent
 .mainContent
-   text-align: center
