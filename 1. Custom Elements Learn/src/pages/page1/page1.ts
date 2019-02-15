@@ -1,6 +1,20 @@
 import '../_templates/basePage/basePage';
 import './page1.sass';
 
+const tmpl = <HTMLTemplateElement>document.querySelector('#x-foo-from-template');
+
+customElements.define('x-foo-shadow-dom', class extends HTMLElement {
+   constructor() {
+      super();
+
+      let shadowRoot = this.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(tmpl.content.cloneNode(true));
+   }
+
+});
+
+
+
 class AppDrawer extends HTMLElement {
    public get disabled(): boolean {
       return this.hasAttribute('disabled');
@@ -14,12 +28,12 @@ class AppDrawer extends HTMLElement {
          this.removeAttribute('disabled');
 
       }
-      
+
    }
-   
+
    constructor() {
       super();
-      
+
       this.init();
    }
 
@@ -37,7 +51,7 @@ class AppDrawer extends HTMLElement {
       if (this.disabled) return;
 
       console.log("Hello, I'm a AppDrawer");
-      
+
    }
 
 }
@@ -45,5 +59,3 @@ class AppDrawer extends HTMLElement {
 
 
 window.customElements.define('app-drawer', AppDrawer);
-
-document.body.innerHTML = `<app-drawer>app-drawer</app-drawer>`;

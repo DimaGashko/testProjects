@@ -6,7 +6,14 @@ block title
 block contentTitle 
    | #{pagesConfig.hash.page1.name}
 
-block content
-   
-   //app-drawer Hello
+block content 
 
+   x-foo-shadow-dom Hello outside x-foo-shadow-dom
+
+   template#x-foo-from-template
+      style.
+         p {
+            color: green
+         };
+      
+      p I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;
