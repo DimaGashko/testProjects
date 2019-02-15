@@ -1,0 +1,17 @@
+extends ../_templates/calcPage/calcPage
+ 
+block title
+   title #{pagesConfig.hash.matrixMulMatrix.name} | #{pagesConfig.name}
+ 
+block contentTitle 
+   | #{pagesConfig.hash.matrixMulMatrix.name}
+
+block fullWidthContent
+   - fullWidthContent = true
+
+append workspace
+
+   .calc 
+      .calc__item.calc__matrixA
+      .calc__item.calc__matrixB
+      .calc__item.calc__matrixC

@@ -1,0 +1,35 @@
+include ../pagesConfig
+
+- // Нужен ли режим максимальной ширины для рабочей области
+- let fullWidthContent = false
+
+doctype html 
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="X-UA-Compatible", content="ie=edge")
+      
+      block title
+   body
+      .wrapper
+
+         include ./components/header
+
+         block fullWidthContent
+            // example: - fullWidthContent = false
+
+         .main(class=fullWidthContent ? "main--fullWidthContent" : "")
+            .main__content
+
+               h1.contentTitle
+                  block contentTitle
+                     | #{pagesConfig.slogan}
+
+               main.mainContent
+                  block content
+
+            .main__aside
+               include ./components/aside
+
+         include ./components/footer

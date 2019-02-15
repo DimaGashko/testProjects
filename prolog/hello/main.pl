@@ -7,4 +7,4 @@ study(marina, oop).
 study(petro, ds).
 study(petro, oop).
 
-teaches(P,S) :- teach(P,C), study(S,C).
+teaches(P,S) :- teach(P,C). study(C,S).
