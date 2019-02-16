@@ -1,3 +1,19 @@
-* 
+\:host
+   display: inline-block
    background-image: url('./img/unchecked-checkbox.svg')
+   background-repeat: no-repeat
    background-size: contain
+   width: 24px
+   height: 24px
+   
+\:host([hidden]) 
+   display: none
+
+\:host([checked]) 
+   background-image: url('./img/checked-checkbox.svg')
+
+\:host([disabled]) 
+   background-image: url('./img/unchecked-checkbox-disabled.svg')
+
+\:host([checked][disabled]) 
+   background-image: url('./img/checked-checkbox-disabled.svg')
