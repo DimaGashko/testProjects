@@ -1,7 +1,6 @@
 import * as templateStr from './template.pug';
-//import * as style from './style.sass';
-//console.log(style); 
-const style = '';
+import * as style from './style.sass';
+console.log(style);
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${templateStr}`;
 
