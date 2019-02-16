@@ -1,0 +1,15 @@
+extends ../_templates/basePage/basePage
+
+block title
+   title #{pagesConfig.hash.page3.name} | #{pagesConfig.name}
+ 
+block contentTitle 
+   | #{pagesConfig.hash.page3.name}
+
+block content 
+
+   .checkbox
+      howto-checkbox#join-checkbox
+      howto-label(for="join-checkbox") Join Newsletter
+
+   
