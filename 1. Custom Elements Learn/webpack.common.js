@@ -71,6 +71,27 @@ module.exports = {
          test: /\.pug/,
          loaders: ['html-loader', 'pug-html-loader'],
       }, {
+         test: /\.tmplsass/,
+         loaders: ['css-loader',
+            {
+               loader: 'postcss-loader',
+               options: {
+                  plugins: [
+                     autoprefixer({
+                        browsers: ['last 3 version']
+                     }),
+                     cssnano(),
+                  ],
+                  sourceMap: true
+               }
+            },
+            {
+               loader: 'sass-loader',
+               options: {
+                  sourceMap: true,
+               }
+            }],
+      }, {
          test: /\.(sass|css)$/,
          use: [
             MiniCssExtractPlugin.loader, //'style-loader',
