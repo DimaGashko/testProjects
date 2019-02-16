@@ -92,12 +92,13 @@ module.exports = {
          test: /\.pug/,
          loaders: ['html-loader', 'pug-html-loader'],
 
-      }, merge({
-         test: /\.tmpl\.sass$/,
+      },
+      merge({
+         test: /\.tmpl\.(sass|css)$/,
          use: [],
       }, styleLoaderBase),
-         merge({
-         test: /\.(sass|css)$/,
+      merge({
+         test: /[^t][^m][^p][^l]\.(sass|css)$/,
          use: [MiniCssExtractPlugin.loader],
       }, styleLoaderBase),
       {
