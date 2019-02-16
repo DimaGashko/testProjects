@@ -6,19 +6,17 @@ interface CustomElementConfig {
 }
 
 export default function CustomElement(config: CustomElementConfig) {
-   return function (cls) {
-      const template = document.createElement('template');
+   config.useShadow = config.useShadow || true;
+   config.template = config.template || '';
 
-      if (!config.template) {
-         config.template = '';
-      }
+   if (config.style) {
+      config.template = `<style>${config.style}</style> ${config.template}`;
+   }
 
-      if (config.style) {
-         config.template = `<style>${config.style}</style> ${config.template}`;
-      }
+   const template = document.createElement('template');
+   template.innerHTML = config.template;
 
-      template.innerHTML = config.template;
-
+   return function (cls: any) {
       const connectedCallback = cls.prototype
          .connectedCallback || function () { };
 
@@ -27,7 +25,7 @@ export default function CustomElement(config: CustomElementConfig) {
 
          if (config.useShadow) {
             this.attachShadow({ mode: 'open' }).appendChild(cloneTmpl);
-            
+
          } else {
             this.appendChild(cloneTmpl);
          }
