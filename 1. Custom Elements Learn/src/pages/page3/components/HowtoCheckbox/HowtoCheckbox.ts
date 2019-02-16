@@ -1,6 +1,6 @@
 import * as templateStr from './template.pug';
 import * as style from './style.string.sass';
-
+ 
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${templateStr}`;
 console.log(`<style>${style}</style>${templateStr}`);
