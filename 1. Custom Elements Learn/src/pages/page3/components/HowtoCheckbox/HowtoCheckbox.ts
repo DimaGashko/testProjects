@@ -1,8 +1,10 @@
 import * as templateStr from './template.pug';
-import * as style from './style.sass';
-console.log(style);
+import * as _style from './style.sass';
+const style = _style.toString();
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${templateStr}`;
+console.log(`<style>${style}</style>${templateStr}`);
+
 
 export default class HowtoCheckbox extends HTMLElement {
    private template = template;
