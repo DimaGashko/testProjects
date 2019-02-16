@@ -8,4 +8,18 @@ block contentTitle
 
 block content 
 
-   fancy-tabs ASDF
+   fancy-tabs
+      button(slot="title") Title
+      button(slot="title", selected) Title 2
+      button(slot="title") Title 3
+      section content panel 1
+      section content panel 2
+      section content panel 3
+
+   fancy-tabs
+      h4(slot="title") Title
+      section content panel 1
+      h4(slot="title", selected) Title 2
+      section content panel 2
+      h4(slot="title") Title 3
+      section content panel 3

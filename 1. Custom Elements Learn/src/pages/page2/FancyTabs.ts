@@ -6,7 +6,7 @@ export default class FancyTabs extends HTMLElement {
 
       this.initShadow();
 
-      this.onclick = () => console.log('ASDF'); 
+      this.onclick = () => console.log('FancyTabs'); 
       
    }
 
@@ -14,10 +14,13 @@ export default class FancyTabs extends HTMLElement {
       this.shadow = this.attachShadow({ mode: 'open' });
 
       this.shadow.innerHTML = `
-         <style>#tabs { }</style> <!-- styles are scoped to fancy-tabs! -->
-         <div id="tabs">...</div>
-         <div id="panels">...</div>
-         <slot></slot>
+         <style>#tabs { }</style> 
+         <div id="tabs">
+            <slot id="tabsSlot" name="title"></slot> <!-- named slot -->
+         </div>
+         <div id="panels">
+            <slot id="panelsSlot"></slot>
+         </div>
       `;
    }
 }
