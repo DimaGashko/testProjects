@@ -3,7 +3,6 @@ import * as style from './style.string.sass';
  
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${templateStr}`;
-console.log(`<style>${style}</style>${templateStr}`);
 
 export default class HowtoCheckbox extends HTMLElement {
    private template = template;
@@ -21,6 +20,8 @@ export default class HowtoCheckbox extends HTMLElement {
    public connectedCallback() {
       this.initAttrs();
 
+      this.addEventListener('keyup', this._onKeyUp);
+      this.addEventListener('click', this._onClick);
    }
 
    public disconnectedCallback() {
