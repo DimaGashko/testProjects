@@ -10,6 +10,33 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const pagesConfig = require("./src/pages/_templates/pagesConfig.pug")
 
+const imageWebpackLoaderConfig = {
+   mozjpeg: {
+      progressive: true,
+      quality: 65
+   },
+   pngquant: {
+      quality: '65-90',
+      speed: 4
+   },
+}
+
+const styleLoaderBase = {
+   use: [
+      'css-loader',
+      {
+         loader: 'postcss-loader',
+         options: {
+            plugins: [autoprefixer(), cssnano()],
+            sourceMap: true,
+         }
+      },
+      {
+         loader: 'sass-loader?sourceMap=true'
+      }
+   ]
+}
+
 const htmlWebpackPluginBaseConfig = {
    favicon: "./src/img/favicon.png",
    minify: {
@@ -42,15 +69,13 @@ pagesConfig.pages.forEach((page) => {
       chunks: [page.alias],
    })),
 
-   htmlWebpackPlugins.push(htmlPlugin);
+      htmlWebpackPlugins.push(htmlPlugin);
 
 });
 
 module.exports = {
    mode: 'development',
-   entry: merge(entries, {
-
-   }),
+   entry: merge(entries, {}),
    output: {
       filename: 'js/[name].[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
@@ -60,59 +85,28 @@ module.exports = {
       rules: [{
          test: /\.ts$/,
          use: [{
-            loader: 'ts-loader',
-            options: {
-               transpileOnly: true,
-               experimentalWatchApi: true,
-            },
+            loader: 'ts-loader?transpileOnly=true&experimentalWatchApi=true',
          }],
          exclude: /node_modules/
       }, {
          test: /\.pug/,
          loaders: ['html-loader', 'pug-html-loader'],
-      }, {
+
+      }, merge({
+         test: /\.tmpl\.sass$/,
+         use: [],
+      }, styleLoaderBase),
+         merge({
          test: /\.(sass|css)$/,
-         use: [
-            /*MiniCssExtractPlugin.loader,*/ /*'style-loader',*/
-            'css-loader',
-            {
-               loader: 'postcss-loader',
-               options: {
-                  plugins: [
-                     autoprefixer({
-                        browsers: ['last 3 version']
-                     }),
-                     cssnano(),
-                  ],
-                  sourceMap: true
-               }
-            },
-            {
-               loader: 'sass-loader',
-               options: {
-                  sourceMap: true,
-               }
-            }
-         ]
-      }, {
+         use: [MiniCssExtractPlugin.loader],
+      }, styleLoaderBase),
+      {
          test: /\.(gif|png|jpe?g|svg|webp)$/i,
          use: [{
-            loader: 'file-loader',
-            options: {
-               outputPath: 'img',
-            },
+            loader: 'file-loader?outputPath=img',
          }, {
             loader: 'image-webpack-loader',
-            options: {
-               mozjpeg: {
-                  progressive: true,
-                  quality: 65
-               },
-               pngquant: {
-                  quality: '65-90',
-                  speed: 4
-               },
-            }
+            options: imageWebpackLoaderConfig,
          }],
       }],
    },
@@ -124,6 +118,6 @@ module.exports = {
       new MiniCssExtractPlugin({
          filename: "css/[name].[contenthash].css",
       }),
-   ].concat(htmlWebpackPlugins), 
+   ].concat(htmlWebpackPlugins),
 
 };
