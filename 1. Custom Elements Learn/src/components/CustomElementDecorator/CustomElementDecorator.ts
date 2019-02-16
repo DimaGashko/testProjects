@@ -1,13 +1,17 @@
 interface CustomElementConfig {
    selector: string;
-   template: string;
+   template?: string;
    style?: string;
    useShadow?: boolean;
 }
 
 export default function CustomElement(config: CustomElementConfig) {
-   return function (cls: ClassDecorator) {
+   return function (cls) {
       const template = document.createElement('template');
+
+      if (!config.template) {
+         config.template = '';
+      }
 
       if (config.style) {
          config.template = `<style>${config.style}</style> ${config.template}`;
@@ -30,7 +34,7 @@ export default function CustomElement(config: CustomElementConfig) {
 
          connectedCallback.call(this);
       }
-      
+
       window.customElements.define(config.selector, cls);
    }
 }
