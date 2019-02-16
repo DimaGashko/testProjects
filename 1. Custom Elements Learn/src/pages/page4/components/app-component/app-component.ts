@@ -1,4 +1,5 @@
 import CustomElement from "../../../../components/CustomElement/CustomElement";
+import "../menu-component/menu-component";
 
 @CustomElement({
    selector: 'x-app',
@@ -10,5 +11,8 @@ export default class AppComponent extends HTMLElement {
    constructor() { 
       super();
 
+      this.addEventListener('click', () => {
+         console.log('app-component');
+      });
    }
 }

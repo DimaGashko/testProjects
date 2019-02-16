@@ -6,9 +6,12 @@ import CustomElement from "../../../../components/CustomElement/CustomElement";
    style: require('./menu-component.string.sass'),
    useShadow: true,
 })
-export default class AppComponent extends HTMLElement {
+export default class MenuComponent extends HTMLElement {
    constructor() { 
       super();
 
+      this.addEventListener('click', () => {
+         console.log('menu-component');
+      });
    }
 }
