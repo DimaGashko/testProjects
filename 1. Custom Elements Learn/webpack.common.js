@@ -94,11 +94,11 @@ module.exports = {
 
       },
       merge({
-         test: /\.tmpl\.(sass|css)$/,
+         test: /\.string\.(sass|css)$/,
          use: [],
       }, styleLoaderBase),
       merge({
-         test: /[^t][^m][^p][^l]\.(sass|css)$/,
+         test: /^((?!string).)*\.(sass|css)$/,
          use: [MiniCssExtractPlugin.loader],
       }, styleLoaderBase),
       {

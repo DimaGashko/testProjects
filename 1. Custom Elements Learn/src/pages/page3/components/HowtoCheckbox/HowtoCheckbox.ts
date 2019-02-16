@@ -1,5 +1,5 @@
 import * as templateStr from './template.pug';
-import * as style from './style.tmpl.sass';
+import * as style from './style.string.sass';
 
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${templateStr}`;
