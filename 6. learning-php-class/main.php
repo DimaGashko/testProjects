@@ -4,7 +4,7 @@ spl_autoload_register(function($class_name) {
     require $class_name . '.php';
 });
 
-$p = new Person("Dmitry", "Gashko", 21);
+$p = new Student("Dmitry", "Gashko", 20, "My Uni");
 
 ?>
 
@@ -19,7 +19,8 @@ $p = new Person("Dmitry", "Gashko", 21);
 <body>
     <h1>People</h1>
     <div class="Person">
-        <?= "$p->firstName $p->lastName ($p->age)" ?>
+        <?= $p->getFullName() . " ($p->age)" ?>
+
     </div>
 </body>
 </html>

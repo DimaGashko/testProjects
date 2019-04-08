@@ -11,7 +11,11 @@ class Person {
 
     function __construct($firstName, $lastName, $age) {
         $this->firstName = $firstName;
-        $this->$lastName = $lastName;
+        $this->lastName = $lastName;
         $this->age = $age; 
+    }
+
+    function getFullName() {
+        return "$this->firstName $this->lastName";
     }
 }
