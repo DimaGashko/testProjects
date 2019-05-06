@@ -3,11 +3,19 @@
 *
     box-sizing: border-box 
 
+$p: 1px
+
 .container
     display: flex
     border: 10px solid goldenrod
     min-height: 100vh
-    flex-direction: column-reverse
+    flex-direction: row
+    flex-wrap: wrap
+    padding: $p
+
+.box
+    width: calc(33.3333% - #{$p * 2})
+    margin: $p
 
 .box 
     color: #fff
@@ -45,3 +53,9 @@
 
 .box10
     background: #16a085
+
+.box11
+    background: #e67e22
+
+.box12
+    background: #34495e
