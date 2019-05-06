@@ -1,0 +1,20 @@
+extends ../_templates/basePage/basePage
+
+block title
+   title= pagesConfig.hash.index.name
+
+block contentTitle 
+   | #{pagesConfig.hash.index.name}
+
+block content
+
+   nav
+
+      - const pages = pagesConfig.pages.filter(page => page.alias !== 'index');
+   
+      h2 Pages:
+
+      ul 
+         for page in pages
+
+            li: a(href=page.url)= page.name

@@ -1,0 +1,35 @@
+-
+   0; // Что бы считать файл одновременно как js так и pug
+
+   const pagesConfig = {
+      name: 'What The Flexbox?!',
+      hash: {}, // Объект страниц по имени (pagesConfig.hash.index)
+
+      pages: [{
+         name: 'What The Flexbox?!',
+         alias: 'index',
+         url: '/', 
+         webpackEntry: './src/pages/index/index.ts', 
+         htmlWebpackPlugin: {
+            filename: 'index.html',
+            template: './src/pages/index/index.pug',
+         },
+      }, {
+         name: 'What The Flexbox?!',
+         alias: '1',
+         url: '/1.html', 
+         webpackEntry: './src/pages/1/1.ts', 
+         htmlWebpackPlugin: {
+            filename: '1.html',
+            template: './src/pages/1/1.pug',
+         },
+      }],
+   }
+   
+   pagesConfig.pages.forEach((page) => {
+      pagesConfig.hash[page.alias] = page;
+   });
+
+   if (module) {
+      module.exports = pagesConfig;
+   }
