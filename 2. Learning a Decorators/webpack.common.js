@@ -69,7 +69,7 @@ pagesConfig.pages.forEach((page) => {
       chunks: [page.alias],
    })),
 
-      htmlWebpackPlugins.push(htmlPlugin);
+    htmlWebpackPlugins.push(htmlPlugin);
 
 });
 
