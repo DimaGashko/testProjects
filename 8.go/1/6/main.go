@@ -20,4 +20,27 @@ func main() {
 	c := make([]int, 10)
 	fmt.Println(c)
 
+	m := [][]int{
+		{1, 2, 3, 4},
+		{5, 6, 7, 8},
+		{9, 9, 9, 9},
+	}
+
+	m = append(m, m[0])
+
+	fmt.Println(m)
+
+	m[0][0] = 111
+
+	fmt.Println(m)
+
+	fmt.Println()
+
+	for i, v := range m {
+		for j, w := range v {
+			fmt.Println(i, v, j, w)
+
+		}
+	}
+
 }
