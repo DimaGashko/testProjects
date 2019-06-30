@@ -17,8 +17,10 @@ func main() {
 	fmt.Println(a, b)
 	fmt.Println(split(17))
 
-	var e, f, g int
+	var e, f, g = 5, "5.00", true
+	t, h := 5, "'hi'"
 	fmt.Println(a, b, c, d, e, f, g)
+	fmt.Println(t, h)
 
 }
 
