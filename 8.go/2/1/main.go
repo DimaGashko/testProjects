@@ -13,11 +13,11 @@ func init() {
 
 func main() {
 	http.HandleFunc("/404", func(w http.ResponseWriter, r *http.Request) {
-		tpl.ExecuteTemplate(w, "404.gohtml", nil)
+		tpl.ExecuteTemplate(w, "404.gohtml", "/404")
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tpl.ExecuteTemplate(w, "index.gohtml", nil)
+		tpl.ExecuteTemplate(w, "index.gohtml", "/index")
 	})
 
 	http.ListenAndServe(":1115", nil)
