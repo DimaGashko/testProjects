@@ -3,15 +3,36 @@ package main
 import "fmt"
 
 type vertex struct {
-	Lat, Long float64
+	x, y int
 }
 
-var m map[string]vertex
-
 func main() {
-	m = make(map[string]vertex)
-	m["Bell Labs"] = vertex{
-		40.68433, -74.39967,
+	m := make(map[int]vertex)
+
+	m[111] = vertex{
+		y: 1, x: 5,
 	}
-	fmt.Println(m["Bell Labs"])
+
+	m[222] = vertex{
+		1, 5,
+	}
+
+	fmt.Println(m)
+
+	wordsMap := map[string]string{
+		"apple":   "phone",
+		"table":   "lunch",
+		"morning": "sun",
+	}
+
+	fmt.Println(wordsMap["morning"])
+	fmt.Println(wordsMap)
+
+	delete(wordsMap, "table")
+	fmt.Println(wordsMap)
+
+	elem, present := wordsMap["apple"]
+
+	fmt.Println(elem, present)
+
 }
