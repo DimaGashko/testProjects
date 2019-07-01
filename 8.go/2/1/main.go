@@ -1,36 +1,24 @@
 package main
 
 import (
-	"io"
+	"html/template"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", index)
-	http.ListenAndServe(":1112", nil)
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*"))
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, `
-		package main
-		
-		import (
-			"fmt"
-			"net/http"
-			"time"
-		)
-		
-		func greet(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintf(w, "Hello World! %s", time.Now())
-		}
-		
-		func main() {
-			http.HandleFunc("/", greet)
-			http.ListenAndServe(":8080", nil)
-		}
+func main() {
+	http.HandleFunc("/404", func(w http.ResponseWriter, r *http.Request) {
+		tpl.ExecuteTemplate(w, "404.gohtml", nil)
+	})
 
-		<h1>Request</h1>
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tpl.ExecuteTemplate(w, "index.gohtml", nil)
+	})
 
-		{{r}}
-	`)
+	http.ListenAndServe(":1113", nil)
 }
