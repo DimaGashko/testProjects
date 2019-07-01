@@ -17,8 +17,16 @@ func main() {
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tpl.ExecuteTemplate(w, "index.gohtml", "/index")
+		type indexData struct {
+			Name string
+		}
+
+		d := indexData{
+			Name: "Hello Web By Golang",
+		}
+
+		tpl.ExecuteTemplate(w, "index.gohtml", d)
 	})
 
-	http.ListenAndServe(":1115", nil)
+	http.ListenAndServe(":1116", nil)
 }

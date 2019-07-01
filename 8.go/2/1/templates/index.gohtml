@@ -9,9 +9,10 @@
 </head> 
 
 <body>
+    {{ template "header" . }}
     <h1>Go Web</h1> 
     <p>The Gopher like it!</p>
-    <p>{{ . }}</p>
+    <p>{{ .Name }}</p>
 </body>
 
 </html>
