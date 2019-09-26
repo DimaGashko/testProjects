@@ -8,6 +8,8 @@ const cssnano = require('cssnano');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const imageWebpackLoaderConfig = {
    mozjpeg: {
       progressive: true,
@@ -38,7 +40,7 @@ const styleLoaderBase = {
 module.exports = {
    mode: 'development',
    entry: {
-      index: './src/index.js'
+      index: './src/index.ts'
    },
    output: {
       filename: 'js/[name].[contenthash].js',
@@ -90,7 +92,8 @@ module.exports = {
             collapseWhitespace: true,
             removeComments: true,
          },
-      })
+      }),
+      new BundleAnalyzerPlugin(),
    ],
 
 };
